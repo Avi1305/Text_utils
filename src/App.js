@@ -3,12 +3,12 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import './App.css';
 import PropTypes from 'prop-types'
-import About from './components/About';
+// import About from './components/About';
 import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route
+  // Routes,
+  // Route
 }
   from "react-router-dom";
 
@@ -51,7 +51,7 @@ function App() {
     } else {
       setmode("light")
       document.body.style.backgroundColor = "#e5e6ff";
-      showAlert("light mode has een enabled","success")
+      showAlert("light mode has een enabled", "success")
     }
 
   }
@@ -64,19 +64,12 @@ function App() {
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <div className="container my-i">
           <Alert alert={alert} />
-          <Routes>
-            <Route exact path="/about" element={<About />} />
-
-
-            <Route exact path="/" element={<TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} />}>
-              {/* <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} /> */}
-            </Route>
-          </Routes>
-      </div >
+          <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode}/> 
+        </div >
       </Router>
 
-        {/* <About/> */}
-    
+      
+
 
 
     </>
