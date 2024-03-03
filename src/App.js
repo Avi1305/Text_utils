@@ -5,10 +5,12 @@ import './App.css';
 import PropTypes from 'prop-types'
 import About from './components/About';
 import Alert from './components/Alert';
-import{BrowserRouter as Router,
-Routes,
-Route}
-from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+}
+  from "react-router-dom";
 
 
 import React, { useState } from 'react'
@@ -16,7 +18,7 @@ import React, { useState } from 'react'
 function App() {
   const [mode, setmode] = useState("light");
   const [alert, setAlert] = useState(null);
-  
+
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -27,7 +29,7 @@ function App() {
     }, 2000);
   }
 
-  const removeBodyclass=()=>{
+  const removeBodyclass = () => {
     document.body.classList.remove("bg-light");
     document.body.classList.remove("bg-dark");
     document.body.classList.remove("bg-success");
@@ -40,12 +42,12 @@ function App() {
   const toggleMode = (cls) => {
     console.log(cls)
     removeBodyclass()
-    document.body.classList.add("bg-"+cls);
+    document.body.classList.add("bg-" + cls);
     if (mode === "light") {
       setmode("dark")
-      
+
       document.body.style.backgroundColor = "#02033d";
-      showAlert("dark mode has een enabled","success")
+      showAlert("dark mode has een enabled", "success")
     } else {
       setmode("light")
       document.body.style.backgroundColor = "#e5e6ff";
@@ -57,23 +59,24 @@ function App() {
 
   return (
     <>
+      <Router>
 
-    <Router>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-      <div className="container my-i">
-        <Alert alert = {alert}/>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <div className="container my-i">
+          <Alert alert={alert} />
           <Routes>
-            <Route exact path="/about" element={<About/>}/>
-              
-            
+            <Route exact path="/about" element={<About />} />
+
+
             <Route exact path="/" element={<TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} />}>
-            {/* <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} /> */}
+              {/* <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} /> */}
             </Route>
           </Routes>
-        
+      </div >
+      </Router>
+
         {/* <About/> */}
-      </div>
-    </Router>
+    
 
 
     </>
