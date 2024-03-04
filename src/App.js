@@ -40,20 +40,39 @@ function App() {
 
 
   const toggleMode = (cls) => {
-    console.log(cls)
+    // console.log(cls)
     removeBodyclass()
-    document.body.classList.add("bg-" + cls);
+
+    // if (mode === "light") {
+    //   setmode("dark")
+
+      // document.body.style.backgroundColor = "#02033d";
+      // showAlert("dark mode has een enabled", "success")
+    // } else if (mode === "dark") {
+    //   setmode("light")
+      // document.body.style.backgroundColor = "#e5e6ff";
+      // showAlert("light mode has een enabled", "success")
+    // }
+    // else {
+      document.body.classList.add("bg-" + cls);
+    // }
+
+  }
+
+  const toggleModeSwitch = () => {
+    removeBodyclass()
+
     if (mode === "light") {
       setmode("dark")
-
       document.body.style.backgroundColor = "#02033d";
+
       showAlert("dark mode has een enabled", "success")
     } else {
       setmode("light")
       document.body.style.backgroundColor = "#e5e6ff";
+
       showAlert("light mode has een enabled", "success")
     }
-
   }
 
 
@@ -61,14 +80,14 @@ function App() {
     <>
       <Router>
 
-        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} toggleModeSwitch={toggleModeSwitch} />
         <div className="container my-i">
           <Alert alert={alert} />
-          <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode}/> 
+          <TextForm showalert={showAlert} heading="Enter the text here to Analyze" mode={mode} />
         </div >
       </Router>
 
-      
+
 
 
 
